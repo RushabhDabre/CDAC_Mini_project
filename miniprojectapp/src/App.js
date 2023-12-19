@@ -9,9 +9,15 @@ import Register from './Components/Register';
 function App() {
   return (
     <div>
+<<<<<<< HEAD
       <Navbar/>
      
       {/* <nav>
+=======
+      {/* <Navbar/> */}
+     <Register/>
+     {/* <nav>
+>>>>>>> 8625fcf94c33f21f56a9696c8e80df732e6a38a4
         <Link to="/home">HOME</Link>
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>
