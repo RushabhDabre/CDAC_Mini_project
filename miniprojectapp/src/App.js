@@ -8,7 +8,7 @@ import Register from './Components/Register';
 function App() {
   return (
     <div>
-      <Navbar/>
+      {/* <Navbar/> */}
      <Register/>
      {/* <nav>
         <Link to="/home">HOME</Link>
