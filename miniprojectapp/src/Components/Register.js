@@ -1,7 +1,7 @@
 export default function Register(){
     return (
-        <div className="container-fluid">
-        <div className="row shadow-lg p-4 m-4 d-flex" style={{"width": '45rem'}}>
+        <div className="container-fluid d-flex justify-content-center">
+        <div className="row shadow-lg p-4 m-4 " style={{"width": '45rem'}}>
             <div className="col-6">
                 
             </div>
