@@ -4,11 +4,13 @@ import Home from './Components/Home';
 import Login from './Components/Login';
 import InnerNavbar from './Components/InnerNavbar';
 import Register from './Components/Register';
+import OuterNavbar from './Components/OuterNavbar';
 
 function App() {
   return (
     <div>
-      <InnerNavbar/>
+      <OuterNavbar/>
+      {/* <InnerNavbar/> */}
      {/* <Register/> */}
     {/* <Login/> */}
 
