@@ -25,33 +25,38 @@ app.listen(9000, function(){
 	console.log("exp - REST server - 9000");
 })
 
+// app.get('/viewUser',function(req,res)){
 
+// }
 
-app.post('/insertEmp',function(req,res){
-	//read data from req body
-	//if json - json(), normal data - urlencoded
-    // console.log("req received");
- 
-	// var eid = req.body.empid;
-	// var enm = req.body.ename;
-	// var sal = req.body.sal;
-	// var dno = req.body.deptno;
+app.post('/insertUser',function(req,res){
+	var name = req.body.name;
+	var age = req.body.age;
+	var gender = req.body.gender;
+	var email = req.body.email;
+	var phone = req.body.phone;
+	var password = req.body.password;
 
-	// console.log(eid,":",enm,":",sal,":"+dno);
-	// var query="insert into emp(empid,ename,deptno,salary) values(?,?,?,?)";
-	// con.query(query, [eid,enm,dno,sal], function(err) {
-	// 	if(!err)
-	// 		res.send("success");
-	// 	else
-	// 		res.send("failure");
-	// });
+	var query="insert into userAccount(name,age,gender,email,phone,password)values(?,?,?,?,?,?)";
+	con.query(query,[name,age,gender,email,phone,password],function(err){
+        if(!err)
+        	res.send("SUCESS");
+        else
+        	res.send("FAILURE"+err);
+    });
+});
+
+//not working but success in postman
+app.put('/forgetPass',function(req,res){
+    var password = req.body.password;
+    var query = "update userAccount set password = ? where email = 'harshaltarget@gmail.com'";
+    con.query(query,[password],function(err, result){
+        if(!err)
+        	res.send("SUCESS");
+        else
+        	res.send("FAILURE"+err);
+    })
 })
-
-
-
-
-
-
 
 app.all('*',function(req,res) {
 	res.send("Wrong URL");

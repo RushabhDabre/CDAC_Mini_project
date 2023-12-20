@@ -9,9 +9,9 @@ import OuterNavbar from './Components/OuterNavbar';
 function App() {
   return (
     <div>
-      <OuterNavbar/>
+      {/* <OuterNavbar/> */}
       {/* <InnerNavbar/> */}
-     {/* <Register/> */}
+     <Register/>
     {/* <Login/> */}
 
           
