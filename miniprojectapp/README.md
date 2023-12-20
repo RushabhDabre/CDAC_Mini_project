@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Project Name
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Description of your project.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Home Page](#home-page)
+- [Registration Page](#registration-page)
+- [rest_api.js](#rest-apijs)
+- [Login/Logout Component](#loginlogout-component)
+- [UpdatePass](#updatepass)
 
-### `npm start`
+## Home Page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The Home Page serves as the entry-level page for your application. Key features include:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **OuterNavbar**: (Under Development) Navigation bar to be completed.
+- **Routes to Registration and Login**: Buttons for registration and login that redirect to their respective pages.
 
-### `npm test`
+## Registration Page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The Registration Page allows users to register for your application. Key features include:
 
-### `npm run build`
+- **Alert on Success**: After successful registration, an alert is generated to notify the user.
+- **Password Validation**: The current password validation is identified as an issue and needs improvement.
+- **Transition to Login Page**: After successful registration, users are automatically redirected to the login page.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## rest_api.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This module handles the backend RESTful API functionality. Key features include:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **UpdatePass API**: Currently reported as not working as desired and needs attention.
 
-### `npm run eject`
+## Login/Logout Component
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The Login/Logout Component is a work in progress. Key features include:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **User Interface Completion**: The UI for login/logout is yet to be completed.
+- **Home Page After Login**: Upon successful login, users will be redirected to the Home Page with an InnerNavbar.
+- **Logout Alert**: An alert is planned for logout confirmation, offering 'Ok' and 'Cancel' options.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## UpdatePass
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The UpdatePass module is under development. Key features include:
 
-## Learn More
+- **User Interface Completion**: The UI for updating passwords is yet to be completed.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## How to Use
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Provide instructions on how to set up and run your application. Include any dependencies that need to be installed and steps for configuration.
 
-### Code Splitting
+## Known Issues
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+List any known issues or areas that need improvement.
 
-### Analyzing the Bundle Size
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Provide guidelines for others who may want to contribute to your project. Include information about how to submit bug reports, feature requests, or pull requests.
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Specify the license under which your project is distributed.
 
-### Advanced Configuration
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Provide your contact information for users who may have questions or concerns about your project.
