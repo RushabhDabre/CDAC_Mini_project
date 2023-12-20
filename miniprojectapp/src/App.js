@@ -9,11 +9,9 @@ import Register from './Components/Register';
 function App() {
   return (
     <div>
-<<<<<<< HEAD
-      <Navbar/>
+      {/* <Navbar/> */}
      
       {/* <nav>
-=======
       {/* <Navbar/> */}
      <Register/>
      {/* <nav>
