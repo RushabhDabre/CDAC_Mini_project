@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {  useNavigate } from "react-router-dom";
 
 export default function UserLogin(){
@@ -6,6 +6,10 @@ export default function UserLogin(){
     const [password, setPassword] = useState("");
     const [msg, setMsg] = useState("");
     let navigate = useNavigate();
+
+    useEffect(()=>{
+        localStorage.setItem("msg",email);
+    })
 
     const handleLogin=(e)=>{
         //default behavior submit - cancelling
