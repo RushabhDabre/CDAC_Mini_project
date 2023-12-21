@@ -1,7 +1,7 @@
 import React from "react";
 import {  useNavigate } from "react-router-dom";
 
-export default function OuterNavbar() {
+export default function OutterNavbar() {
     let navigate = useNavigate();
 
     return (
