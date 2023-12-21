@@ -5,6 +5,8 @@ import Login from './Components/Login';
 import InnerNavbar from './Components/InnerNavbar';
 import Register from './Components/Register';
 import OuterNavbar from './Components/OuterNavbar';
+import UpdatePass from './Components/UpdatePass';
+import UserLogin from './Components/UserLogin'
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       {/* <InnerNavbar/> */}
      <Register/>
     {/* <Login/> */}
+    {/* <UpdatePass/> */}
+    {/* <UserLogin/> */}
 
           
       <Routes>
