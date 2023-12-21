@@ -4,6 +4,7 @@ import React,{useState,useEffect} from 'react';
 export default function UpdatePass(){
     let navigate = useNavigate();
     const [password, setPassword] = useState("");
+    const [oldpassword, setoldPassword] = useState("");
     const [email,setEmail]=useState("");
     const [msg, setMsg] = useState("");
     
@@ -12,24 +13,22 @@ export default function UpdatePass(){
         setEmail(str)
     },[]);
 
-    
     const handleSubmit=(e)=>{
         e.preventDefault();
         const reqOptions ={
             method:"put",
             headers:{'content-type':'application/json'},
-            body:JSON.stringify({ msg, password })
+            body:JSON.stringify({ password,oldpassword,email })
         }
         fetch("http://localhost:9000/forgetPass",reqOptions)
         .then(res=>res.text())
         .then(str=>{
             setMsg(str);
-            if (str === "Password Updated successfully !") {
+            if (str === "SUCESS") {
                 navigate("/home");
             }
         })
     }
-
 
     return (
         <div className="container d-flex justify-content-center ">
@@ -37,14 +36,11 @@ export default function UpdatePass(){
                 <h1 className="d-flex justify-content-center text-success">Update Password</h1>      
                 <div className="p-5">
                 <form >
-                <div className="form-group">   
-                        <input  type="text"  value={email} className="form-control" />
+                    <div className="form-group mt-2">   
+                        <input  type="password" placeholder="Old Password" className="form-control" value={oldpassword} onChange={(e) => setoldPassword(e.target.value)}/>
                     </div>
                     <div className="form-group mt-2">   
-                        <input  type="password" placeholder="Old Password" className="form-control" />
-                    </div>
-                    <div className="form-group mt-2">   
-                        <input  type="password" placeholder="New Password" className="form-control" />
+                        <input  type="password" placeholder="New Password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <div>
                         <button type="submit" className="btn btn-success w-100 font-weight-bold mt-2"  onClick={handleSubmit}>Submit</button>
@@ -53,6 +49,9 @@ export default function UpdatePass(){
                 </form>    
                 </div>
             </div> 
+            {/* <div>{msg}</div> */}
         </div>  
+
+       
     )
 }

@@ -68,8 +68,9 @@ app.post('/insertUser',function(req,res){
 app.put('/forgetPass',function(req,res){
 	  var email = req.body.email;
     var password = req.body.password;
-    var query = "update userAccount set password = ? where email = ?";
-    con.query(query,[password, email],function(err, result){
+    var oldpassword = req.body.oldpassword;
+    var query = "update userAccount set password = ? where password =? and email = ? ";
+    con.query(query,[password,oldpassword,email],function(err, result){
         if(!err){
         	res.send("SUCESS");
 		}else{
