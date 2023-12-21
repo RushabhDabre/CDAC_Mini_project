@@ -1,6 +1,7 @@
 import pic from '../Image/DocLogin.jpg'
 import { useForm } from "react-hook-form";
-import { useState, useReducer, useEffect } from "react"
+import { useState, useReducer, useEffect } from "react";
+import {  useNavigate } from "react-router-dom";
 
 //info - about one user, initial state
 const init = {
@@ -26,6 +27,7 @@ export default function Register(){
     const { register, formState: {errors , isValid}, watch } = useForm({mode: 'all'});
     const[user,dispatch] = useReducer(reducer,init);
     const [msg,setmsg]=useState("");
+    let navigate = useNavigate();
 
     //for testing
     useEffect(() => {
@@ -51,7 +53,12 @@ export default function Register(){
 
         fetch("http://localhost:9000/insertUser",reqOptions)
         .then(res=>res.text())
-        .then(str=>setmsg(str))
+        .then(str=>{
+            setmsg(str);
+            if (str === 'Registration successful') {
+                navigate('/login');
+            }
+        })
     }
 
     //bug in password validation -- need to fix 
@@ -63,7 +70,7 @@ export default function Register(){
                     <img src={pic} alt="loginPAge" className="img-fluid mt-2"/>
                 </div>
                 <div className="col-md-6 p-5">
-                <form >
+                <form>
                     <div className="form-group ">   
                         <input type="text" placeholder="Enter Name" className="form-control" 
                         {...register("name",{required: true, pattern: /^[A-Za-z\s]{3,}$/})} //for Validation

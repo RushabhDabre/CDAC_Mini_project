@@ -25,10 +25,6 @@ app.listen(9000, function(){
 	console.log("exp - REST server - 9000");
 })
 
-// app.get('/viewUser',function(req,res)){
-
-// }
-
 app.post('/insertUser',function(req,res){
 	var name = req.body.name;
 	var age = req.body.age;
@@ -40,22 +36,25 @@ app.post('/insertUser',function(req,res){
 	var query="insert into userAccount(name,age,gender,email,phone,password)values(?,?,?,?,?,?)";
 	con.query(query,[name,age,gender,email,phone,password],function(err){
         if(!err)
-        	res.send("SUCESS");
+        	res.send("Registration successful");
         else
-        	res.send("FAILURE"+err);
+        	res.send("Registration failed"+err);
     });
 });
 
 //not working but success in postman
 app.put('/forgetPass',function(req,res){
+	var email = req.body.email;
     var password = req.body.password;
-    var query = "update userAccount set password = ? where email = 'harshaltarget@gmail.com'";
-    con.query(query,[password],function(err, result){
-        if(!err)
+    var query = "update userAccount set password = ? where email = ?";
+    con.query(query,[password, email],function(err, result){
+        if(!err){
         	res.send("SUCESS");
-        else
+		}else{
         	res.send("FAILURE"+err);
+		}
     })
+
 })
 
 app.all('*',function(req,res) {

@@ -1,4 +1,5 @@
 export default function UpdatePass(){
+    let navigate = useNavigate();
     return (
         <div className="container d-flex justify-content-center ">
             <div className="row shadow-lg p-4 m-5" style={{"width": '35rem'}}>

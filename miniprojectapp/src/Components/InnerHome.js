@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Home(){
+export default function InnerHome(){
 
 return(<>
     <h1>This is Home page</h1>
