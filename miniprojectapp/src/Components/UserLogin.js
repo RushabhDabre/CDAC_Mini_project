@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {  useNavigate } from "react-router-dom";
 
-export default function UserLogin(){
+export default function UserLogin({ onLoginSuccess }){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [msg, setMsg] = useState("");
@@ -26,6 +26,7 @@ export default function UserLogin(){
             setMsg(str);
             if (str === "Login successful") {
                 // Redirect to the login page
+                onLoginSuccess();
                 navigate("/home");
             }
         })
