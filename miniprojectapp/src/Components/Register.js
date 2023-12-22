@@ -1,7 +1,8 @@
+import { useState, useReducer, useEffect, useRef } from "react";
 import pic from '../Image/DocLogin.jpg'
 import { useForm } from "react-hook-form";
-import { useState, useReducer, useEffect } from "react";
 import {  useNavigate } from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar'
 
 //info - about one user, initial state
 const init = {
@@ -24,6 +25,7 @@ const reducer = (state,action) => {
 
 
 export default function Register(){
+    const ref = useRef(null) //used for Loading Bar
     const { register, formState: {errors , isValid}, watch } = useForm({mode: 'all'});
     const[user,dispatch] = useReducer(reducer,init);
     const [msg,setmsg]=useState("");
@@ -56,7 +58,9 @@ export default function Register(){
         .then(str=>{
             setmsg(str);
             if (str === 'Registration successful') {
-                navigate('/login');
+                // navigate('/login');
+                ref.current.complete();
+                setTimeout(() => navigate("/login"), 500);
             }
         })
     }
@@ -64,6 +68,7 @@ export default function Register(){
     //bug in password validation -- need to fix 
     return (
         <div className="container d-flex justify-content-center ">
+            <LoadingBar color="#f11946" ref={ref} shadow={true} />
             <div className="row shadow-lg p-4 m-5" style={{"width": '65rem'}}>
                 <h1 className="d-flex justify-content-center text-success">Registration Page</h1>
                 <div className="col-md-6 d-none d-md-block">
@@ -127,8 +132,7 @@ export default function Register(){
                         <button type="submit" className="btn btn-success w-100 font-weight-bold mt-2" disabled={!isValid} value="Insert" onClick={(e)=>{submitData(e)}}>Submit</button>
                     </div>
                 </form>    
-            <p> {JSON.stringify(user)} </p>
-            <p> {msg} </p>
+            {/* <p> {msg} </p> */}
                 </div>
             </div> 
         </div>  

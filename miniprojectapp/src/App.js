@@ -6,24 +6,26 @@ import InnerHome from './Components/InnerHome';
 import OutterHome from './Components/OutterHome';
 import UpdatePass from './Components/UpdatePass';
 
+
 function App() {
   const [isVisible, setVisible] = useState(true);
-
-  const handleLoginSuccess = () => {
+  
+  const handleLogin = () => {
     setVisible(false);
   };
+
 
   return (
     <div>
       {isVisible && <OutterHome />}
-          
+                
       <Routes>
         <Route path="/register" element={<Register/>}/>
-        <Route path="/login" element={<UserLogin onLoginSuccess={handleLoginSuccess}/>}/>
-        <Route path="/home" element={<InnerHome/>}/>
+        <Route path="/login" element={<UserLogin onLoginSuccess={handleLogin}/>}/>
+        <Route path="/home" element={<InnerHome isVisible={isVisible}/>}/>
         <Route path="/change" element={<UpdatePass/>}/>
+        <Route path="/logout" element={<OutterHome/>}/>
       </Routes>
-
     </div>
   );
 }

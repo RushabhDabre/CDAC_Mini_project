@@ -6,7 +6,7 @@ var bp = require('body-parser');
 
 // MySQL database connection
 var con = mysql.createConnection({
-    host:"localhost",
+  host:"localhost",
 	user:"root",
 	password:"root",
 	database:"dbt"
