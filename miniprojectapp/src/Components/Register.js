@@ -130,6 +130,7 @@ export default function Register(){
                     </div>
                     <div>
                         <button type="submit" className="btn btn-success w-100 font-weight-bold mt-2" disabled={!isValid} value="Insert" onClick={(e)=>{submitData(e)}}>Submit</button>
+                        <button type="submit" className="btn btn-secondary w-100 font-weight-bold mt-2" onClick={(e)=>{navigate('/')}}>Cancel</button>
                     </div>
                 </form>    
             {/* <p> {msg} </p> */}

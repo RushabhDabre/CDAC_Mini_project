@@ -17,9 +17,8 @@ function App() {
 
   return (
     <div>
-      {isVisible && <OutterHome />}
-                
       <Routes>
+        <Route path="/" element={isVisible && <OutterHome />}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/login" element={<UserLogin onLoginSuccess={handleLogin}/>}/>
         <Route path="/home" element={<InnerHome isVisible={isVisible}/>}/>

@@ -63,8 +63,6 @@ app.post('/insertUser',function(req,res){
     });
 });
 
-
-//not working but success in postman
 app.put('/forgetPass',function(req,res){
 	  var email = req.body.email;
     var password = req.body.password;
