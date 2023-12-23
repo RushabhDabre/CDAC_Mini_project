@@ -1,13 +1,18 @@
+import React, { useRef } from "react";
 import { Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import '../../node_modules/react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import {  useNavigate } from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar'
 
-export default function InnerNavbar() {
+export default function InnerNavbar({  handleLogout }) {
+    const ref = useRef(null) //used for Loading Bar
     let navigate = useNavigate();
     const HandleLogOut=()=>{
-        navigate('/login');
-        localStorage.removeItem('msg');
+        handleLogout();
+        ref.current.complete();
+        setTimeout(() => navigate("/"), 500);
+        localStorage.removeItem('email');
     };
     const confirmation = () => {
         confirmAlert({
@@ -27,6 +32,7 @@ export default function InnerNavbar() {
     };
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <LoadingBar color="#f11946" ref={ref} shadow={true} />
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">LOGO</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>

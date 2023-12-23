@@ -14,6 +14,9 @@ function App() {
     setVisible(false);
   };
 
+  const handleLogout = () => {
+    setVisible(true);
+  };
 
   return (
     <div>
@@ -21,9 +24,8 @@ function App() {
         <Route path="/" element={isVisible && <OutterHome/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/login" element={<UserLogin onLoginSuccess={handleLogin}/>}/>
-        <Route path="/home" element={<InnerHome isVisible={isVisible}/>}/>
+        <Route path="/home" element={<InnerHome isVisible={isVisible} handleLogout={handleLogout}/>}/>
         <Route path="/change" element={<UpdatePass/>}/>
-        <Route path="/logout" element={<OutterHome/>}/>
       </Routes>
     </div>
   );
