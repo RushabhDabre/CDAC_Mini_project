@@ -64,18 +64,36 @@ app.post('/insertUser',function(req,res){
     });
 });
 
-app.put('/forgetPass',function(req,res){
-	  var email = req.body.email;
-    var password = req.body.password;
-    var query = "update userAccount set password = ? where email = ?";
-    con.query(query,[password, email],function(err, result){
-        if(!err){
-        	res.send("SUCCESS");
-		}else{
-        	res.send("Old Password Doesn't match!!");
-		}
-    })
-})
+app.put('/forgetPass', function(req, res) {
+  var email = req.body.email;
+  var password = req.body.password;
+  var oldpassword = req.body.oldpassword;
+
+  // Check if the old password matches
+  var checkQuery = "SELECT * FROM userAccount WHERE email = ? AND password = ?";
+  con.query(checkQuery, [email, oldpassword], function(checkErr, checkResult) {
+      if (checkErr) {
+          console.error("Database query error:", checkErr);
+          res.send("Internal Server Error");
+      } else if (checkResult.length > 0) {
+          // Old password matches, update the password
+          var updateQuery = "UPDATE userAccount SET password = ? WHERE email = ?";
+          con.query(updateQuery, [password, email], function(updateErr, updateResult) {
+              if (!updateErr) {
+                  res.send("SUCCESS");
+                  console.log("Password update successful");
+              } else {
+                  console.error("Database update error:", updateErr);
+                  res.send("Internal Server Error");
+              }
+          });
+      } else {
+          // Old password doesn't match
+          console.log("Old Password Doesn't match!!");
+          res.send("Old Password Doesn't match!!");
+      }
+  });
+});
 
 app.all('*',function(req,res) {
 	res.send("Wrong URL");

@@ -13,7 +13,7 @@ export default function UpdatePass(){
     
     useEffect(()=>{
         console.log('useEffect is running');
-        let userEmail = localStorage.getItem('msg')
+        let userEmail = localStorage.getItem('email')
         setEmail(userEmail);    
     },[]);
 
@@ -22,7 +22,7 @@ export default function UpdatePass(){
         const reqOptions ={
             method:"put",
             headers:{'content-type':'application/json'},
-            body:JSON.stringify({ password,oldpassword,email })
+            body:JSON.stringify({ oldpassword,password,email })
         }
         fetch("http://localhost:9000/forgetPass",reqOptions)
         .then(res=>res.text())

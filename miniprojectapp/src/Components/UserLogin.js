@@ -12,8 +12,8 @@ export default function UserLogin({ onLoginSuccess }){
 
     useEffect(()=>{
         console.log('Setting item in localStorage:', email);
-        localStorage.setItem("msg",email);
-    },[])
+        localStorage.setItem('email',email);
+    },[email])
 
     const handleLogin=(e)=>{
         //default behavior submit - cancelling
@@ -31,7 +31,6 @@ export default function UserLogin({ onLoginSuccess }){
             if (str === "Login successful") {
                 // Redirect to the login page
                 onLoginSuccess();
-                // navigate("/home");
                 ref.current.complete();
                 setTimeout(() => navigate("/home"), 500);
             }else {
