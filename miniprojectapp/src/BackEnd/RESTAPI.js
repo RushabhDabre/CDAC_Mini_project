@@ -26,8 +26,8 @@ con.connect(function(err){
 
 // Login endpoint
 app.post("/userLogin", (req, res) => {
-    var email = req.body.email;
-	  var password = req.body.password;
+  var email = req.body.email;
+	var password = req.body.password;
 
   // Check credentials in the database
   var query = "SELECT * FROM userAccount WHERE email = ? AND password = ?";
@@ -59,7 +59,8 @@ app.post('/insertUser',function(req,res){
         if(!err)
         	res.send("Registration successful");
         else
-        	res.send("Registration failed"+err);
+        	res.send("User Already Exist!!");
+          console.log("User Already Exist!!");
     });
 });
 
@@ -69,9 +70,9 @@ app.put('/forgetPass',function(req,res){
     var query = "update userAccount set password = ? where email = ?";
     con.query(query,[password, email],function(err, result){
         if(!err){
-        	res.send("SUCESS");
+        	res.send("SUCCESS");
 		}else{
-        	res.send("FAILURE"+err);
+        	res.send("Old Password Doesn't match!!");
 		}
     })
 })

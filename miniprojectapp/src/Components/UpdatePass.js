@@ -1,17 +1,20 @@
+import React, {useState, useEffect, useRef} from 'react';
 import {useNavigate} from 'react-router-dom';
-import React,{useState,useEffect} from 'react';
+import LoadingBar from 'react-top-loading-bar';
 
 export default function UpdatePass(){
-    let navigate = useNavigate();
+    const [isVisible, setVisible] = useState(true);
+    const ref = useRef(null) //used for Loading Bar
     const [password, setPassword] = useState("");
     const [oldpassword, setoldPassword] = useState("");
     const [email,setEmail]=useState("");
     const [msg, setMsg] = useState("");
-    const [error, setError] = useState("");
+    let navigate = useNavigate();
     
     useEffect(()=>{
-        let str=localStorage.getItem('msg')
-        setEmail(str)
+        console.log('useEffect is running');
+        let userEmail = localStorage.getItem('msg')
+        setEmail(userEmail);    
     },[]);
 
     const handleSubmit=(e)=>{
@@ -25,23 +28,24 @@ export default function UpdatePass(){
         .then(res=>res.text())
         .then(str=>{
             setMsg(str);
-            if (str === "SUCESS") {
-                navigate("/home");
+            if (str === "SUCCESS") {
+                ref.current.complete();
+                setTimeout(() => navigate("/home"), 500);
             }else {
-                setError('Invalid Password!');
-                // alert('Invalid Password!');
-                // navigate("/change");
+                setVisible(false)
+                setTimeout(() => setVisible(true), 2000);
             }
         })
     }
 
     return (
         <div className="container d-flex justify-content-center ">
-            {error && <div className="alert alert-danger mt-2">{error}</div>}
+            <LoadingBar color="#f11946" ref={ref} shadow={true} />
             <div className="row shadow-lg p-4 m-5" style={{"width": '35rem'}}>
                 <h1 className="d-flex justify-content-center text-success">Update Password</h1>      
                 <div className="p-5">
-                <form >
+                <div className={`border border-danger mb-2 ${isVisible ? 'd-none' : ''} d-flex justify-content-center`}><strong className="text-danger">{msg}</strong></div>
+                <form onSubmit={handleSubmit}>
                     <div className="form-group mt-2">   
                         <input  type="password" placeholder="Old Password" className="form-control" value={oldpassword} onChange={(e) => setoldPassword(e.target.value)}/>
                     </div>
@@ -50,7 +54,7 @@ export default function UpdatePass(){
                     </div>
                     <div>
                         <button type="button" className="btn btn-success w-100 font-weight-bold mt-2"  onClick={handleSubmit}>Submit</button>
-                        <button type="button" className="btn btn-secondary w-100 font-weight-bold mt-2" >Cancel</button>
+                        <button type="button" className="btn btn-secondary w-100 font-weight-bold mt-2" onClick={()=>{navigate('/home')}} >Cancel</button>
                     </div>
                 </form>    
                 </div>

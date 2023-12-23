@@ -5,6 +5,10 @@ import {  useNavigate } from "react-router-dom";
 
 export default function InnerNavbar() {
     let navigate = useNavigate();
+    const HandleLogOut=()=>{
+        navigate('/login');
+        localStorage.removeItem('msg');
+    };
     const confirmation = () => {
         confirmAlert({
             title: 'Confirm to logout',
@@ -12,7 +16,7 @@ export default function InnerNavbar() {
             buttons: [
                 {
                     label: 'Yes',
-                    onClick: () => {navigate('/login')}
+                    onClick: () => {HandleLogOut()}
                 },
                 {
                     label: 'No',

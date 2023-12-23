@@ -3,6 +3,7 @@ import {  useNavigate } from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar'
 
 export default function UserLogin({ onLoginSuccess }){
+    const [isVisible, setVisible] = useState(true);
     const ref = useRef(null) //used for Loading Bar
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -10,6 +11,7 @@ export default function UserLogin({ onLoginSuccess }){
     let navigate = useNavigate();
 
     useEffect(()=>{
+        console.log('Setting item in localStorage:', email);
         localStorage.setItem("msg",email);
     },[])
 
@@ -32,6 +34,9 @@ export default function UserLogin({ onLoginSuccess }){
                 // navigate("/home");
                 ref.current.complete();
                 setTimeout(() => navigate("/home"), 500);
+            }else {
+                setVisible(false)
+                setTimeout(() => setVisible(true), 2000);
             }
         })
     }
@@ -41,6 +46,7 @@ export default function UserLogin({ onLoginSuccess }){
             <LoadingBar color="#f11946" ref={ref} shadow={true} />
             <div className="shadow-lg p-4 m-5" style={{"width": '25rem'}}>
                 <h1 className="d-flex justify-content-center text-success mb-3">Please Login!</h1>      
+                <div className={`border border-danger mb-2 ${isVisible ? 'd-none' : ''} d-flex justify-content-center`}><strong className="text-danger">{msg}</strong></div>
                 <form onSubmit={handleLogin}>
                     <div className="mb-3">   
                         <input  type="email" placeholder="Email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -59,8 +65,8 @@ export default function UserLogin({ onLoginSuccess }){
                     <div className="text-center mb-3">
                         <p>Not a member? <a href="/register">Register</a></p>
                     </div>
-                    <div className="text-center mb-3">
-                        {/* <p>{msg}</p> */}
+                    <div className="text-center">
+                        {/* <text className="text-danger">{msg}</text> */}
                     </div>
                 </form>    
             </div> 
